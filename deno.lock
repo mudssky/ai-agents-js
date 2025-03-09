@@ -6,6 +6,7 @@
     "npm:@langchain/community@~0.3.34": "0.3.34_@browserbasehq+stagehand@1.14.0__@playwright+test@1.51.0__deepmerge@4.3.1__dotenv@16.4.7__openai@4.86.2___zod@3.24.2___ws@8.18.1__zod@3.24.2__ws@8.18.1_@ibm-cloud+watsonx-ai@1.5.1__@langchain+core@0.3.42___zod@3.24.2___openai@4.86.2____zod@3.24.2____ws@8.18.1__openai@4.86.2___zod@3.24.2___ws@8.18.1_@langchain+core@0.3.42__zod@3.24.2_ibm-cloud-sdk-core@5.3.0__axios@1.7.9_lodash@4.17.21_openai@4.86.2__zod@3.24.2__ws@8.18.1_pdf-parse@1.1.1_dotenv@16.4.7_zod@3.24.2_@langchain+core@0.3.42__zod@3.24.2__openai@4.86.2___zod@3.24.2___ws@8.18.1_@langchain+deepseek@0.0.1__@langchain+core@0.3.42___zod@3.24.2",
     "npm:@langchain/core@~0.3.42": "0.3.42_zod@3.24.2",
     "npm:@langchain/deepseek@^0.0.1": "0.0.1_@langchain+core@0.3.42__zod@3.24.2",
+    "npm:@langchain/ollama@0.2": "0.2.0_@langchain+core@0.3.42__zod@3.24.2_zod@3.24.2",
     "npm:@langchain/openai@~0.4.4": "0.4.4_@langchain+core@0.3.42__openai@4.86.2___zod@3.24.2__zod@3.24.2_zod@3.24.2_openai@4.86.2__zod@3.24.2",
     "npm:@types/node@*": "22.12.0",
     "npm:cheerio@1": "1.0.0",
@@ -182,6 +183,16 @@
         "@langchain/core@0.3.42_zod@3.24.2_openai@4.86.2__zod@3.24.2__ws@8.18.1",
         "@langchain/openai@0.4.4_@langchain+core@0.3.42__zod@3.24.2_zod@3.24.2_openai@4.86.2__zod@3.24.2_@langchain+core@0.3.42__zod@3.24.2__openai@4.86.2___zod@3.24.2___ws@8.18.1",
         "zod"
+      ]
+    },
+    "@langchain/ollama@0.2.0_@langchain+core@0.3.42__zod@3.24.2_zod@3.24.2": {
+      "integrity": "sha512-jLlYFqt+nbhaJKLakk7lRTWHZJ7wHeJLM6yuv4jToQ8zPzpL//372+MjggDoW0mnw8ofysg1T2C6mEJspKJtiA==",
+      "dependencies": [
+        "@langchain/core@0.3.42_zod@3.24.2",
+        "ollama",
+        "uuid",
+        "zod",
+        "zod-to-json-schema"
       ]
     },
     "@langchain/openai@0.4.4_@langchain+core@0.3.42__openai@4.86.2___zod@3.24.2__zod@3.24.2_zod@3.24.2_openai@4.86.2__zod@3.24.2": {
@@ -851,6 +862,12 @@
         "boolbase"
       ]
     },
+    "ollama@0.5.14": {
+      "integrity": "sha512-pvOuEYa2WkkAumxzJP0RdEYHkbZ64AYyyUszXVX7ruLvk5L+EiO2G71da2GqEQ4IAk4j6eLoUbGk5arzFT1wJA==",
+      "dependencies": [
+        "whatwg-fetch"
+      ]
+    },
     "openai@4.86.2_ws@8.18.1_zod@3.24.2": {
       "integrity": "sha512-nvYeFjmjdSu6/msld+22JoUlCICNk/lUFpSMmc6KNhpeNLpqL70TqbD/8Vura/tFmYqHKW0trcjgPwUpKSPwaA==",
       "dependencies": [
@@ -1087,6 +1104,9 @@
         "iconv-lite"
       ]
     },
+    "whatwg-fetch@3.6.20": {
+      "integrity": "sha512-EqhiFU6daOA8kpjOWTL0olhVOF3i7OrFzSYiGsEMB8GcXS+RrzauAERX65xMeNWVqxA6HXH2m69Z9LaKKdisfg=="
+    },
     "whatwg-mimetype@4.0.0": {
       "integrity": "sha512-QaKxh0eNIi2mE9p2vEdzfagOKHCcj1pJ56EEHGQOVxp8r9/iszLUUV7v89x9O1p/T+NlTM5W7jW6+cz4Fq1YVg=="
     },
@@ -1119,6 +1139,7 @@
       "npm:@langchain/community@~0.3.34",
       "npm:@langchain/core@~0.3.42",
       "npm:@langchain/deepseek@^0.0.1",
+      "npm:@langchain/ollama@0.2",
       "npm:@langchain/openai@~0.4.4",
       "npm:cheerio@1",
       "npm:dotenv@^16.4.7",
