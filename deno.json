@@ -3,13 +3,17 @@
     "dev": "deno run --watch main.ts"
   },
   "imports": {
+    "@langchain/community": "npm:@langchain/community@^0.3.34",
     "@langchain/core": "npm:@langchain/core@^0.3.42",
     "@langchain/deepseek": "npm:@langchain/deepseek@^0.0.1",
     "@langchain/openai": "npm:@langchain/openai@^0.4.4",
-    "@std/assert": "jsr:@std/assert@1",
+    "@std/assert": "jsr:@std/assert@^1.0.11",
+    "cheerio": "npm:cheerio@^1.0.0",
     "dotenv": "npm:dotenv@^16.4.7",
+    "ignore": "npm:ignore@^7.0.3",
     "langchain": "npm:langchain@^0.3.19",
     "lodash": "npm:lodash@^4.17.21",
+    "pdf-parse": "npm:pdf-parse@^1.1.1",
     "zod": "npm:zod@^3.24.2"
   }
 }

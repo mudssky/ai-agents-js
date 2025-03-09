@@ -1,0 +1,11 @@
+import { ChatDeepSeek } from "@langchain/deepseek";
+import { HumanMessage } from "@langchain/core/messages";
+const model = new ChatDeepSeek(
+    {
+        model:'deepseek-chat'
+    }
+)
+
+await model.invoke([
+    new HumanMessage("讲一个笑话")
+])
