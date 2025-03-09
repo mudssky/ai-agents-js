@@ -16,6 +16,7 @@
   },
   "dependencies": {
     "@langchain/community": "^0.3.34",
+    "@langchain/deepseek": "^0.0.1",
     "@langchain/ollama": "^0.2.0",
     "dotenv": "^16.4.7",
     "faiss-node": "^0.5.1",
