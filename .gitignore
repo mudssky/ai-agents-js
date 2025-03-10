@@ -133,3 +133,4 @@ dist
 notebooks/data/*.pdf
 # 向量数据库
 db/
+threeBody.txt
