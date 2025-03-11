@@ -1,4 +1,5 @@
 {
   "deno.enable": true,
-  "deno.enablePaths": ["notebooks"]
+  "deno.enablePaths": ["notebooks"],
+  "deno.disablePaths": ["notebooks/examples"]
 }
