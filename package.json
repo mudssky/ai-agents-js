@@ -11,6 +11,7 @@
   "license": "ISC",
   "packageManager": "pnpm@10.6.1+sha256.81204845a396962a9c4b49cc2d6cafbb49a758652d3c243f2128cbc638084fe2",
   "devDependencies": {
+    "@types/express": "^5.0.0",
     "tsx": "^4.19.3",
     "typescript": "^5.8.2"
   },
@@ -19,6 +20,7 @@
     "@langchain/deepseek": "^0.0.1",
     "@langchain/ollama": "^0.2.0",
     "dotenv": "^16.4.7",
+    "express": "^4.21.2",
     "faiss-node": "^0.5.1",
     "langchain": "^0.3.19"
   }
