@@ -8,6 +8,7 @@ import { RunnableSequence } from "@langchain/core/runnables";
 import { ChatPromptTemplate } from "@langchain/core/prompts";
 import { StringOutputParser } from "@langchain/core/output_parsers";
 import { ChatDeepSeek } from "@langchain/deepseek";
+import { PROJECT_ROOT } from "@/config";
 
 //拼接上下文到一起
 const convertDocsToString = (documents: any[]): string => {
@@ -18,7 +19,7 @@ async function run() {
 
   //   1. 构建 vector store 和 retriever
   const loader = new TextLoader(
-    path.join(__dirname, "../notebooks/data/threeBody.txt")
+    path.join(PROJECT_ROOT, "notebooks/data/threeBody.txt")
   );
   const docs = await loader.load();
   const splitter = new RecursiveCharacterTextSplitter({
@@ -33,7 +34,7 @@ async function run() {
     baseUrl: "http://localhost:11434", // Default value
   });
 
-  const directory = path.join(__dirname, "../db/threeBody");
+  const directory = path.join(PROJECT_ROOT, "db/threeBody");
   let vectorstore;
 
   // 分批处理的大小

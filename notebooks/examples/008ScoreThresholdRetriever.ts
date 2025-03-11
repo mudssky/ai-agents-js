@@ -5,8 +5,9 @@ import { MultiQueryRetriever } from "langchain/retrievers/multi_query";
 import { ChatDeepSeek } from "@langchain/deepseek";
 import dotenv from "dotenv";
 import { ScoreThresholdRetriever } from "langchain/retrievers/score_threshold";
+import { PROJECT_ROOT } from "@/config";
 async function run() {
-  const directory = path.join(__dirname, "../db/kongyiji");
+  const directory = path.join(PROJECT_ROOT, "db/kongyiji");
   const embeddings = new OllamaEmbeddings({
     model: "bge-m3",
     baseUrl: "http://localhost:11434", // Default value

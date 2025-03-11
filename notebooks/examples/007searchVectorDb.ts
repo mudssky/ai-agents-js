@@ -1,9 +1,10 @@
 import path from "path";
 import { OllamaEmbeddings } from "@langchain/ollama";
 import { FaissStore } from "@langchain/community/vectorstores/faiss";
+import { PROJECT_ROOT } from "@/config";
 
 async function run() {
-  const directory = path.join(__dirname, "../db/kongyiji");
+  const directory = path.join(PROJECT_ROOT, "/db/kongyiji");
   const embeddings = new OllamaEmbeddings({
     model: "bge-m3",
     baseUrl: "http://localhost:11434", // Default value

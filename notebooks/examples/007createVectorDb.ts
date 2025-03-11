@@ -4,11 +4,10 @@ import { TextLoader } from "langchain/document_loaders/fs/text";
 import { FaissStore } from "@langchain/community/vectorstores/faiss";
 import path from "path";
 import "faiss-node";
+import { PROJECT_ROOT } from "@/config";
 
 const run = async () => {
-  const loader = new TextLoader(
-    path.join(__dirname, "../notebooks/data/kong.txt")
-  );
+  const loader = new TextLoader(`${PROJECT_ROOT}/notebooks/data/kong.txt`);
   const docs = await loader.load();
 
   const splitter = new RecursiveCharacterTextSplitter({
@@ -23,7 +22,7 @@ const run = async () => {
   });
   const vectorStore = await FaissStore.fromDocuments(splitDocs, embeddings);
 
-  const directory = path.join(__dirname, "../db/kongyiji");
+  const directory = path.join(PROJECT_ROOT, "/db/kongyiji");
   await vectorStore.save(directory);
 };
 

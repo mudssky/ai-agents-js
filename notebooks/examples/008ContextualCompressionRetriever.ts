@@ -1,3 +1,4 @@
+import { PROJECT_ROOT } from "@/config";
 import { FaissStore } from "@langchain/community/vectorstores/faiss";
 import { ChatDeepSeek } from "@langchain/deepseek";
 import { OllamaEmbeddings } from "@langchain/ollama";
@@ -8,7 +9,7 @@ import path from "path";
 async function run() {
   process.env.LANGCHAIN_VERBOSE = "true";
 
-  const directory = path.join(__dirname, "../db/kongyiji");
+  const directory = path.join(PROJECT_ROOT, "db/kongyiji");
   const model = new ChatDeepSeek({
     model: "deepseek-chat",
   });

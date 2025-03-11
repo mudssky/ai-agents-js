@@ -17,6 +17,7 @@ import fs from "fs";
 import { OllamaEmbeddings } from "@langchain/ollama";
 import { FaissStore } from "@langchain/community/vectorstores/faiss";
 import { JSONChatHistory } from "./013JSONChatHistory";
+import { PROJECT_ROOT } from "@/config";
 
 export async function getRagChain() {
   // 优化用户的对话
@@ -57,13 +58,15 @@ export async function getRagChain() {
     model: "bge-m3",
     baseUrl: "http://localhost:11434", // Default value
   });
-  const directory = path.join(__dirname, "../../db/threeBody");
+  const directory = path.join(PROJECT_ROOT, "db/threeBody");
   let vectorstore;
   // 分批处理的大小
   const batchSize = 10;
   if (!fs.existsSync(directory)) {
     //   1. 构建 vector store 和 retriever
-    const loader = new TextLoader(path.join(__dirname, "./data/threeBody.txt"));
+    const loader = new TextLoader(
+      path.join(PROJECT_ROOT, "notebooks/data/threeBody.txt")
+    );
     const docs = await loader.load();
     const splitter = new RecursiveCharacterTextSplitter({
       chunkSize: 500,

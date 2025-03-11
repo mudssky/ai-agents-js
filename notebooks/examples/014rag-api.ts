@@ -6,7 +6,7 @@ const port = 22080;
 
 app.use(express.json());
 
-app.post("/", async (req, res) => {
+app.post("/", async (req: any, res: any) => {
   const ragChain = await getRagChain();
   const body = req.body;
   const result = await ragChain.stream(
