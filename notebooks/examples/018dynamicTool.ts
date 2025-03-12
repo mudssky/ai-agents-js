@@ -12,6 +12,8 @@ import { Calculator } from "@langchain/community/tools/calculator";
 import { AgentExecutor, createReactAgent } from "langchain/agents";
 import { pull } from "langchain/hub";
 import * as dotenv from "dotenv";
+import { ChatOpenAI } from "@langchain/openai";
+import { ChatAlibabaTongyi } from "@langchain/community/chat_models/alibaba_tongyi";
 
 async function loadVectorStore() {
   const directory = path.join(PROJECT_ROOT, "db/threeBody");
@@ -91,6 +93,10 @@ async function run() {
     model: "deepseek-chat",
     temperature: 0,
   });
+  //   const llm = new ChatAlibabaTongyi({
+  //     model: "qwen-max-latest",
+  //     temperature: 0,
+  //   });
   const agent = await createReactAgent({
     llm,
     tools,
@@ -102,10 +108,11 @@ async function run() {
   });
 
   const res = await agentExecutor.invoke({
-    input: "三体中自然选择号前进四的情节",
+    // input: "三体中自然选择号前进四的情节",
     // input: "我有 17 个苹果，小明的苹果比我的三倍少 10 个，小明有多少个苹果？",
     // deepseek chat v3 似乎不支持复杂输入，dateDiffTool用不了
-    // input: "今年是 2025 年，今年 5.1 和 10.1 之间有多少天？",
+    // qwen-max 2025-01-27 直接得到答案了，没有按照要求返回
+    input: "今年是 2025 年，今年 5.1 和 10.1 之间有多少天？",
   });
   console.log({ res });
 }
