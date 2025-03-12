@@ -19,6 +19,9 @@ import { FaissStore } from "@langchain/community/vectorstores/faiss";
 import { JSONChatHistory } from "./013JSONChatHistory";
 import { PROJECT_ROOT } from "@/config";
 
+export async function loadVectorStore(){
+  
+}
 export async function getRagChain() {
   // 优化用户的对话
   // Human: 这个故事的主角是谁？
