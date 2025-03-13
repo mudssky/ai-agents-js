@@ -14,6 +14,7 @@ import { pull } from "langchain/hub";
 import * as dotenv from "dotenv";
 import { ChatOpenAI } from "@langchain/openai";
 import { ChatAlibabaTongyi } from "@langchain/community/chat_models/alibaba_tongyi";
+import zodToJsonSchema from "zod-to-json-schema";
 
 async function loadVectorStore() {
   const directory = path.join(PROJECT_ROOT, "db/threeBody");
@@ -72,26 +73,39 @@ async function run() {
     // returnDirect设置为true后，可以直接采用tools返回值，不会再经过一次reAct的流程
     // returnDirect: true,
   });
-  const dateDiffTool = new DynamicStructuredTool({
+  const josnSchema = z.object({
+    startDate: z.string().describe("第一个日期，以YYYY-MM-DD格式表示"),
+    endDate: z.string().describe("第二个日期，以YYYY-MM-DD格式表示"),
+  });
+  const dateDiffTool = new DynamicTool({
     name: "date-difference-calculator",
-    description: "计算两个日期之间的天数差",
-    schema: z.object({
-      start_date: z.string().describe("第一个日期，以YYYY-MM-DD格式表示"),
-      end_date: z.string().describe("第二个日期，以YYYY-MM-DD格式表示"),
-    }),
-    func: async ({ start_date, end_date }) => {
-      const d1 = new Date(start_date);
-      const d2 = new Date(end_date);
+    description: `计算两个日期之间的天数差,输入日期格式用YYYY-MM-DD，用逗号隔开，例如 2025-05-01，2025-10-22`,
+    func: async (inputStr) => {
+      const [startDate, endDate] = inputStr.split(",");
+      const d1 = new Date(startDate);
+      const d2 = new Date(endDate);
       const difference = Math.abs(d2.getTime() - d1.getTime());
       const days = Math.ceil(difference / (1000 * 60 * 60 * 24));
       return days.toString();
     },
   });
+  //   const dateDiffTool = new DynamicStructuredTool({
+  //     name: "date-difference-calculator",
+  //     description: `计算两个日期之间的天数差,输入必须是合法的JSON格式，例如：{"startDate": "2025-05-01", "endDate": "2025-10-01"} `,
+  //     schema: josnSchema,
+  //     func: async ({ startDate, endDate }) => {
+  //       const d1 = new Date(startDate);
+  //       const d2 = new Date(endDate);
+  //       const difference = Math.abs(d2.getTime() - d1.getTime());
+  //       const days = Math.ceil(difference / (1000 * 60 * 60 * 24));
+  //       return days.toString();
+  //     },
+  //   });
   const tools = [retrieverTool, new Calculator(), dateDiffTool];
   const prompt = await pull<PromptTemplate>("hwchase17/react");
   const llm = new ChatDeepSeek({
     model: "deepseek-chat",
-    temperature: 0,
+    temperature: 0.6,
   });
   //   const llm = new ChatAlibabaTongyi({
   //     model: "qwen-max-latest",
