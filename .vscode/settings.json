@@ -1,5 +1,14 @@
 {
   "deno.enable": true,
+  "deno.lint": true,
   "deno.enablePaths": ["notebooks"],
-  "deno.disablePaths": ["notebooks/examples"]
+  "deno.disablePaths": ["notebooks/examples"],
+  "deno.suggest.imports.hosts": {
+    "https://deno.land": true
+  },
+  "files.associations": {
+    "deno.json": "jsonc",
+    // 如果也使用了 deno.jsonc
+    "deno.jsonc": "jsonc"
+  }
 }
