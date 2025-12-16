@@ -14,10 +14,7 @@ import { z } from "zod";
 import mbtiInfo from "../data/mbtiInfo.json";
 import readline from "readline";
 import { ChatMessageHistory } from "langchain/memory";
-import {
-  AgentExecutor,
-  createOpenAIToolsAgent,
-} from "langchain/agents";
+import { AgentExecutor, createOpenAIToolsAgent } from "langchain/agents";
 import * as dotenv from "dotenv";
 
 async function getAgent() {
@@ -112,13 +109,13 @@ async function run() {
           configurable: {
             sessionId: "no-used",
           },
-        }
+        },
       );
 
       console.log("Agent: ", (response as any).output);
       // 检查是否已经调用了 get-mbti-chat 工具
       const toolCalled = (response as any).intermediateSteps?.some(
-        (step: any) => step.action?.tool === "get-mbti-chat"
+        (step: any) => step.action?.tool === "get-mbti-chat",
       );
 
       if (toolCalled) {

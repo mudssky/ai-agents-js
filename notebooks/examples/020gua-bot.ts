@@ -35,13 +35,16 @@ function generateGua(): string[] {
   const messageList = [];
 
   const genYao = () => {
-    const coinRes: number[] = Array.from({ length: 3 }, () =>
-      Math.random() > 0.5 ? 1 : 0
+    const coinRes: number[] = Array.from(
+      { length: 3 },
+      () => Math.random() > 0.5 ? 1 : 0,
     );
     const yinYang = coinRes.reduce((a, b) => a + b, 0) > 1.5 ? "阳" : "阴";
-    const message = `${yaoName[yaoCount]} 为 ${coinRes
-      .map((i) => (i > 0.5 ? "字" : "背"))
-      .join("")} 为 ${yinYang}`;
+    const message = `${yaoName[yaoCount]} 为 ${
+      coinRes
+        .map((i) => (i > 0.5 ? "字" : "背"))
+        .join("")
+    } 为 ${yinYang}`;
 
     return {
       yinYang,
@@ -141,7 +144,7 @@ async function main() {
 
   const llmResPromise = chainWithHistory.invoke(
     { input: "用户的问题是：" + input },
-    { configurable: { sessionId: "no-used" } }
+    { configurable: { sessionId: "no-used" } },
   );
 
   const [_, firstRes] = await Promise.all([
@@ -161,7 +164,7 @@ async function main() {
 
     const response = await chainWithHistory.invoke(
       { input },
-      { configurable: { sessionId: "no-used" } }
+      { configurable: { sessionId: "no-used" } },
     );
 
     console.log("AI: ", response);
@@ -184,11 +187,11 @@ main();
 六爻 为 字背背 为 阴
 您的次卦为 坎
 
-六爻结果: 坎艮  
-卦名为：蒙卦   
-山水蒙（蒙卦）启蒙奋发   
-卦辞为：卦中爻象犯小耗，君子占之运不高，婚姻合伙有琐碎，做事必然受苦劳   
-  
+六爻结果: 坎艮
+卦名为：蒙卦
+山水蒙（蒙卦）启蒙奋发
+卦辞为：卦中爻象犯小耗，君子占之运不高，婚姻合伙有琐碎，做事必然受苦劳
+
 蒙卦是启蒙奋发的象征，卦中爻象犯小耗，君子占之运不高。以此卦象来看，吃火锅可谓是一种“小耗”，而且可能会带来一些琐碎的麻烦，如消化不良、辛辣刺激等。因此建议您今晚内省养生，以清淡饮食为主，待身心调整良好，再考虑享受火锅之乐也未迟。犹如卦中所示，启蒙奋发，需先立足于身体的康健。俗话说，身体是革命的本钱，希望您能够以健康为重，更能够在未来的日子里，拥有更好的精神状态去面对生活。
 User: 我的首卦意味着什么
 AI:  您的首卦是艮卦，艮为山，足艮其德，心行其义，佛道之士能居其位无非也。
@@ -216,11 +219,11 @@ User: exit
 六爻 为 字字背 为 阳
 您的次卦为 震
 
-六爻结果: 震坎  
-卦名为：屯卦   
-水雷屯（屯卦）起始维艰   
-卦辞为：风刮乱丝不见头，颠三倒四犯忧愁，慢从款来左顺遂，急促反惹不自由   
-  
+六爻结果: 震坎
+卦名为：屯卦
+水雷屯（屯卦）起始维艰
+卦辞为：风刮乱丝不见头，颠三倒四犯忧愁，慢从款来左顺遂，急促反惹不自由
+
 卜卦者问：今日临餐之挑选。
 
 屯卦，象征新生、开始，同时也难以避免的困境。据此卦，不妨尝试新的食物，只需略加思索，在尝试和新鲜感中寻找正確的味道。然而，也要提醒卜卦者，新兴之事需慎重，不可急躁，务必做好准备，以防不测。

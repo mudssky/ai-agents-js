@@ -1,6 +1,6 @@
 import { PROJECT_ROOT } from "@/config";
 import { FaissStore } from "@langchain/community/vectorstores/faiss";
-import { DynamicTool, DynamicStructuredTool } from "@langchain/core/tools";
+import { DynamicStructuredTool, DynamicTool } from "@langchain/core/tools";
 import { OllamaEmbeddings } from "@langchain/ollama";
 import path from "path";
 import { createStuffDocumentsChain } from "langchain/chains/combine_documents";
@@ -28,12 +28,13 @@ async function loadVectorStore() {
 }
 
 async function getRetrievalChain() {
-  const prompt =
-    ChatPromptTemplate.fromTemplate(`将以下问题仅基于提供的上下文进行回答：
+  const prompt = ChatPromptTemplate.fromTemplate(
+    `将以下问题仅基于提供的上下文进行回答：
     上下文：
     {context}
 
-    问题：{input}`);
+    问题：{input}`,
+  );
   const llm = new ChatDeepSeek({
     model: "deepseek-chat",
   });
@@ -79,7 +80,8 @@ async function run() {
   });
   const dateDiffTool = new DynamicTool({
     name: "date-difference-calculator",
-    description: `计算两个日期之间的天数差,输入日期格式用YYYY-MM-DD，用逗号隔开，例如 2025-05-01，2025-10-22`,
+    description:
+      `计算两个日期之间的天数差,输入日期格式用YYYY-MM-DD，用逗号隔开，例如 2025-05-01，2025-10-22`,
     func: async (inputStr) => {
       const [startDate, endDate] = inputStr.split(",");
       const d1 = new Date(startDate);

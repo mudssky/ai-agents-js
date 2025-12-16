@@ -13,7 +13,7 @@ app.post("/", async (req: any, res: any) => {
     {
       question: body.question,
     },
-    { configurable: { sessionId: body.session_id } }
+    { configurable: { sessionId: body.session_id } },
   );
 
   res.set("Content-Type", "text/plain");

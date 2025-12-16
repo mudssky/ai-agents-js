@@ -51,7 +51,7 @@ const chain = RunnableSequence.from([
         },
         {
           output,
-        }
+        },
       );
     },
   }),

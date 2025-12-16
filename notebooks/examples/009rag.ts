@@ -19,7 +19,7 @@ async function run() {
 
   //   1. 构建 vector store 和 retriever
   const loader = new TextLoader(
-    path.join(PROJECT_ROOT, "notebooks/data/threeBody.txt")
+    path.join(PROJECT_ROOT, "notebooks/data/threeBody.txt"),
   );
   const docs = await loader.load();
   const splitter = new RecursiveCharacterTextSplitter({
@@ -49,7 +49,7 @@ async function run() {
     for (let i = batchSize; i < splitDocs.length; i += batchSize) {
       const batch = splitDocs.slice(i, i + batchSize);
       console.log(
-        `处理批次 ${i / batchSize + 1}，文档处理进度: ${i}/${splitDocs.length}`
+        `处理批次 ${i / batchSize + 1}，文档处理进度: ${i}/${splitDocs.length}`,
       );
       await vectorstore.addDocuments(batch);
     }

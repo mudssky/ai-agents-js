@@ -11,17 +11,19 @@
 - **目录**: `notebooks/` (不包含 `examples` 子目录)
 - **用途**: 用于运行 Jupyter Notebooks (`.ipynb`) 和部分 Deno 脚本。
 - **配置文件**: `notebooks/deno.json`
-- **说明**: 该目录下的代码使用 Deno 运行时。VS Code 已配置为仅在此目录下启用 Deno 扩展。
+- **说明**: 该目录下的代码使用 Deno 运行时。VS Code 已配置为仅在此目录下启用
+  Deno 扩展。
 
 ### 2. Node.js 环境 (`notebooks/examples/` & 项目根目录)
 
 - **目录**: `notebooks/examples/` 以及项目根目录下的源代码 (`src/`)
 - **用途**: 用于运行大部分示例代码和核心逻辑。
 - **配置文件**: `package.json`, `tsconfig.json`
-- **说明**: 
+- **说明**:
   - `notebooks/examples/` 下的 `.ts` 文件均为 Node.js 代码。
   - 请使用 `npm` 或 `pnpm` 安装依赖。
-  - 运行示例推荐使用 `tsx`，例如：`npx tsx notebooks/examples/007createVectorDb.ts`
+  - 运行示例推荐使用
+    `tsx`，例如：`npx tsx notebooks/examples/007createVectorDb.ts`
 
 ## 快速开始
 
