@@ -14,7 +14,7 @@ import "dotenv/config";
 import { ChatDeepSeek } from "@langchain/deepseek";
 
 export type GuaKey = keyof typeof guaDict;
-const guaInfoBuffer = readFileSync(path.join(__dirname, "./gua.json"));
+const guaInfoBuffer = readFileSync(path.join(__dirname, "../data/gua.json"));
 const guaInfo = JSON.parse(guaInfoBuffer.toString());
 
 const yaoName = ["初爻", "二爻", "三爻", "四爻", "五爻", "六爻"];

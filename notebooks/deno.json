@@ -2,6 +2,7 @@
   "tasks": {
     "dev": "deno run --watch main.ts"
   },
+  "exclude": ["examples"],
   "imports": {
     "@langchain/community": "npm:@langchain/community@^0.3.34",
     "@langchain/core": "npm:@langchain/core@^0.3.42",
