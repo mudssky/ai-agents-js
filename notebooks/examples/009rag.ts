@@ -1,7 +1,7 @@
 import { FaissStore } from "@langchain/community/vectorstores/faiss";
 import { Ollama, OllamaEmbeddings } from "@langchain/ollama";
-import { TextLoader } from "langchain/document_loaders/fs/text";
-import { RecursiveCharacterTextSplitter } from "langchain/text_splitter";
+import { TextLoader } from "@langchain/classic/document_loaders/fs/text";
+import { RecursiveCharacterTextSplitter } from "@langchain/textsplitters";
 import path from "path";
 import fs from "fs";
 import { RunnableSequence } from "@langchain/core/runnables";

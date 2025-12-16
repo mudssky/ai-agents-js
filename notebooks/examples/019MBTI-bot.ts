@@ -14,7 +14,10 @@ import { z } from "zod";
 import mbtiInfo from "../data/mbtiInfo.json";
 import readline from "readline";
 import { ChatMessageHistory } from "langchain/memory";
-import { AgentExecutor, createOpenAIToolsAgent } from "langchain/agents";
+import {
+  AgentExecutor,
+  createOpenAIToolsAgent,
+} from "langchain/agents";
 import * as dotenv from "dotenv";
 
 async function getAgent() {
@@ -41,10 +44,10 @@ async function getAgent() {
   const mbtiTool = new DynamicStructuredTool({
     name: "get-mbti-chat",
     schema: z.object({
-      type: z.enum(mbtiList).describe("用户的 MBTI 类型"),
+      type: z.enum(mbtiList as any).describe("用户的 MBTI 类型"),
       question: z.string().describe("用户的问题"),
     }),
-    func: async ({ type, question }) => {
+    func: async ({ type, question }: { type: any; question: string }) => {
       const info = mbtiInfo[type as keyof typeof mbtiInfo];
       const res = await mbtiChain.invoke({ type, question, info });
       return res;
@@ -112,9 +115,9 @@ async function run() {
         }
       );
 
-      console.log("Agent: ", response.output);
+      console.log("Agent: ", (response as any).output);
       // 检查是否已经调用了 get-mbti-chat 工具
-      const toolCalled = response.intermediateSteps?.some(
+      const toolCalled = (response as any).intermediateSteps?.some(
         (step: any) => step.action?.tool === "get-mbti-chat"
       );
 

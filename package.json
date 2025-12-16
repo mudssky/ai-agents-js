@@ -4,7 +4,18 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "setup:tools": "pip install nbstripout jupytext && deno jupyter --unstable --install",
+    "setup:git": "nbstripout --install",
+    "init": "npm run setup:tools && npm run setup:git",
+    "to:nb": "jupytext --to notebook --output-dir . notebooks/*.ts",
+    "to:ts": "jupytext --to ts:percent --output-dir . notebooks/*.ipynb",
+    "sync": "jupytext --sync notebooks/*.ipynb",
+    "lint": "deno lint notebooks/*.ts",
+    "format": "deno fmt",
+    "clean:output": "nbstripout notebooks/*.ipynb",
+    "typecheck": "npx tsc --noEmit",
+    "qa": "deno run typecheck && deno run lint && deno run format"
   },
   "keywords": [],
   "author": "",
@@ -16,13 +27,17 @@
     "typescript": "^5.8.2"
   },
   "dependencies": {
+    "@langchain/classic": "^1.0.6",
     "@langchain/community": "^1.1.0",
+    "@langchain/core": "^1.1.5",
     "@langchain/deepseek": "^1.0.3",
     "@langchain/ollama": "^1.1.0",
+    "@langchain/openai": "^1.2.0",
+    "@langchain/textsplitters": "^1.0.1",
     "dotenv": "^17.2.3",
     "express": "^5.2.1",
     "faiss-node": "^0.5.1",
-    "langchain": "^1.2.0",
+    "langchain": "^0.3.0",
     "zod": "^4.2.1",
     "zod-to-json-schema": "^3.24.3"
   }

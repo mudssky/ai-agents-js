@@ -10,8 +10,8 @@ import {
   RunnableWithMessageHistory,
 } from "@langchain/core/runnables";
 import { ChatDeepSeek } from "@langchain/deepseek";
-import { TextLoader } from "langchain/document_loaders/fs/text";
-import { RecursiveCharacterTextSplitter } from "langchain/text_splitter";
+import { TextLoader } from "@langchain/classic/document_loaders/fs/text";
+import { RecursiveCharacterTextSplitter } from "@langchain/textsplitters";
 import path from "path";
 import fs from "fs";
 import { OllamaEmbeddings } from "@langchain/ollama";
@@ -19,9 +19,7 @@ import { FaissStore } from "@langchain/community/vectorstores/faiss";
 import { JSONChatHistory } from "./013JSONChatHistory";
 import { PROJECT_ROOT } from "@/config";
 
-export async function loadVectorStore(){
-  
-}
+export async function loadVectorStore() {}
 export async function getRagChain() {
   // 优化用户的对话
   // Human: 这个故事的主角是谁？

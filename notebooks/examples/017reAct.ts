@@ -1,12 +1,12 @@
 import { Calculator } from "@langchain/community/tools/calculator";
-import { TavilySearchResults } from "@langchain/community/tools/tavily_search";
+// import { TavilySearchResults } from "@langchain/community/tools/tavily_search";
 import { pull } from "langchain/hub";
 import { PromptTemplate } from "@langchain/core/prompts";
 import { ChatDeepSeek } from "@langchain/deepseek";
 import { createReactAgent, AgentExecutor } from "langchain/agents";
 import * as dotenv from "dotenv";
 async function run() {
-  const tools = [new TavilySearchResults(), new Calculator()];
+  const tools = [/* new TavilySearchResults(), */ new Calculator()];
   const prompt = await pull<PromptTemplate>("hwchase17/react");
   const llm = new ChatDeepSeek({
     model: "deepseek-chat",

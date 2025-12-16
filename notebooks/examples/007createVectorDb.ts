@@ -1,6 +1,6 @@
 import { OllamaEmbeddings } from "@langchain/ollama";
-import { RecursiveCharacterTextSplitter } from "langchain/text_splitter";
-import { TextLoader } from "langchain/document_loaders/fs/text";
+import { TextLoader } from "@langchain/classic/document_loaders/fs/text";
+import { RecursiveCharacterTextSplitter } from "@langchain/textsplitters";
 import { FaissStore } from "@langchain/community/vectorstores/faiss";
 import path from "path";
 import "faiss-node";

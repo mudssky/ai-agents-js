@@ -4,6 +4,7 @@
   },
   "exclude": ["examples"],
   "imports": {
+    "@/config": "../src/config/index.ts",
     "@langchain/community": "npm:@langchain/community@^0.3.34",
     "@langchain/core": "npm:@langchain/core@^0.3.42",
     "@langchain/deepseek": "npm:@langchain/deepseek@^0.0.1",
